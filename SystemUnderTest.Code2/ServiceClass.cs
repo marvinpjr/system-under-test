@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using SystemUnderTest.Code2;
 
 namespace SystemUnderTest.Code
 {
@@ -14,9 +15,8 @@ namespace SystemUnderTest.Code
         }
 
         public string GetString()
-        {
-            var url = "https://jsonplaceholder.typicode.com/posts";
-            var response = _http.Get(url).Result;
+        {            
+            var response = _http.Get(Config.ApiEndpoint).Result;
             return response.IsSuccessStatusCode ? response.Content.ReadAsStringAsync().Result : "not successful";
         }
     }
